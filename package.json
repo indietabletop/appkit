@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "release": "np",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "echo 'No tests'"
   },
   "exports": {
     "./*": "./dist/*.js"
