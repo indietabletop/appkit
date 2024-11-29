@@ -1,6 +1,6 @@
 {
   "name": "@indietabletop/appkit",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A collection of modules used in apps built by Indie Tabletop Club",
   "private": false,
   "type": "module",
