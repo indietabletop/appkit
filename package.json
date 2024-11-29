@@ -5,6 +5,7 @@
   "private": false,
   "type": "module",
   "scripts": {
+    "release": "np",
     "build": "tsc"
   },
   "exports": {
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
+    "np": "^10.1.0",
     "typescript": "^5.7.2"
   }
 }
