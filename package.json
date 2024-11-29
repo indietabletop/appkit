@@ -12,7 +12,7 @@
     "./*": "./dist/*.js"
   },
   "files": [
-    "/dist/*"
+    "/dist"
   ],
   "author": "Artur Müller",
   "repository": "github:indietabletop/appkit",
