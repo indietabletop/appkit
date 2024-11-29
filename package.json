@@ -5,7 +5,7 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "release": "np",
+    "release": "npm run build && np",
     "build": "tsc",
     "test": "vitest"
   },
