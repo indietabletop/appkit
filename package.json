@@ -1,0 +1,26 @@
+{
+  "name": "@indietabletop/appkit",
+  "version": "0.0.0",
+  "description": "A collection of modules used in apps built by Indie Tabletop Club",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  },
+  "exports": {
+    "./*": "./dist/*.js"
+  },
+  "files": [
+    "/dist/*"
+  ],
+  "author": "Artur Müller",
+  "repository": "github:indietabletop/appkit",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "typescript": "^5.7.2"
+  }
+}
