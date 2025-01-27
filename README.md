@@ -7,6 +7,10 @@ A collection of modules used in Indie Tabletop Club's apps.
 
 ## Contents
 
+### Classes
+
+- IndieTabletopClient
+
 ### Hooks
 
 - useAsyncPp
