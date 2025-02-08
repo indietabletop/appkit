@@ -11,5 +11,5 @@ export type FailurePayload =
       code: number;
     }
   | {
-      type: "NETWORK_ERROR" | "UNKNOWN_ERROR";
+      type: "NETWORK_ERROR" | "UNKNOWN_ERROR" | "VALIDATION_ERROR";
     };

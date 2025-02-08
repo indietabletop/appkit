@@ -63,15 +63,21 @@ export class IndieTabletopClient {
       });
 
       if (!res.ok) {
-        return new Failure({
-          type: "API_ERROR",
-          code: res.status,
-        });
+        console.error(res);
+        return new Failure({ type: "API_ERROR", code: res.status });
       }
 
-      const data = mask(await res.json(), struct);
-      return new Success(data);
+      try {
+        const data = mask(await res.json(), struct);
+        return new Success(data);
+      } catch (error) {
+        console.error(error);
+
+        return new Failure({ type: "VALIDATION_ERROR" });
+      }
     } catch (error) {
+      console.error(error);
+
       if (error instanceof Error) {
         return new Failure({ type: "NETWORK_ERROR" });
       }
