@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { AsyncOp, Failure, Pending, Success } from "./async-op.js";
+import { type AsyncOp, Failure, Pending, Success } from "./async-op.js";
 
 export function useAsyncOp<T, E>() {
   const [op, setOp] = useState<AsyncOp<T, E>>(new Pending());

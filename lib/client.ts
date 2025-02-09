@@ -1,7 +1,7 @@
 import { Failure, Success } from "@indietabletop/appkit/async-op";
-import { Infer, mask, object, string, Struct } from "superstruct";
+import { type Infer, mask, object, string, Struct } from "superstruct";
 import { currentUser, sessionInfo } from "./structs.js";
-import { CurrentUser, FailurePayload, SessionInfo } from "./types.js";
+import type { CurrentUser, FailurePayload, SessionInfo } from "./types.js";
 
 export class IndieTabletopClient {
   origin: string;

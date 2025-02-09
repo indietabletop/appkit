@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
  */
 export function useRevertingState<T>(initialState: T, revertAfterMs: number) {
   const [state, setState] = useState<T | null>(initialState);
-  const timeoutRef = useRef<number | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | number | null>(null);
 
   useEffect(() => {
     const timeoutId = timeoutRef.current;

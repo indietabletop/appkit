@@ -1,4 +1,4 @@
-import { Infer } from "superstruct";
+import type { Infer } from "superstruct";
 import { currentUser, sessionInfo } from "./structs.js";
 
 export type CurrentUser = Infer<ReturnType<typeof currentUser>>;
