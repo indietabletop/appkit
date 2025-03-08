@@ -13,7 +13,7 @@ A collection of modules used in Indie Tabletop Club's apps.
 
 ### Hooks
 
-- useAsyncPp
+- useAsyncOp
 - useDocumentBackgroundColor
 - useIsInstalled
 - useMediaQuery
