@@ -202,6 +202,18 @@ export class Failure<FailureValue> implements Operation<never, FailureValue> {
   }
 }
 
+/**
+ * Folds multiple ops into a single op.
+ *
+ * To return a Success, all ops provided must be a Success. If any Failures are
+ * encountered, will return the first one found.
+ *
+ * If neither of these conditions is true, will return Pending.
+ *
+ * Note that if passed an empty array, will always return a Success (with an
+ * empty array as value). This mimics the semantics of many JS constructs, like
+ * Promise.all or Array.prototype.every.
+ */
 export function fold<Ops extends readonly AsyncOp<unknown, unknown>[] | []>(
   ops: Ops,
 ): AsyncOp<
@@ -212,6 +224,8 @@ export function fold<Ops extends readonly AsyncOp<unknown, unknown>[] | []>(
   },
   Ops[number] extends AsyncOp<unknown, infer F> ? F : never
 > {
+  // Note that due to the semantics of `every`, if the array provided to `fold`
+  // is empty, the result will be a Success with an empty array.
   if (ops.every((v) => v.isSuccess)) {
     return new Success(
       (ops as Success<unknown>[]).map((op) => op.value),
