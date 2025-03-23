@@ -147,6 +147,7 @@ export class IndieTabletopClient {
     email: string;
     password: string;
     acceptedTos: boolean;
+    subscribedToNewsletter: boolean;
   }) {
     const res = await this.fetch(
       "/v1/users",
@@ -161,6 +162,7 @@ export class IndieTabletopClient {
           email: payload.email,
           plaintextPassword: payload.password,
           acceptedTos: payload.acceptedTos,
+          subscribedToNewsletter: payload.subscribedToNewsletter,
         },
       },
     );
