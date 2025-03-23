@@ -10,6 +10,7 @@
     "test": "vitest"
   },
   "exports": {
+    ".": "./dist/index.js",
     "./*": "./dist/*.js"
   },
   "files": [
