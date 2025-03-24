@@ -283,30 +283,6 @@ export class IndieTabletopClient {
       this.onCurrentUser?.(result.value);
     }
 
-    // If /users/me request failed with 401 error, try again with the Ory
-    // endpoint for legacy users. This code block can be removed once Ory
-    // users are fully migrated.
-    if (
-      result.isFailure &&
-      result.failure.type === "API_ERROR" &&
-      result.failure.code === 401
-    ) {
-      const oryR = await this.fetch(
-        `/v1/users/ory`,
-        object({
-          currentUser: currentUser(),
-          sessionInfo: sessionInfo(),
-        }),
-      );
-
-      if (oryR.isSuccess) {
-        this.onCurrentUser?.(oryR.value.currentUser);
-        this.onSessionInfo?.(oryR.value.sessionInfo);
-      }
-
-      return oryR;
-    }
-
     return result;
   }
 }
