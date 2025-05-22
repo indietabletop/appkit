@@ -9,7 +9,9 @@ globalStyle("img, picture, svg", {
 });
 
 globalStyle("a", {
+  display: "block",
   color: "inherit",
+  textDecoration: "none",
 });
 
 globalStyle("input, textarea", {
@@ -24,4 +26,10 @@ globalStyle("button", {
   border: "none",
   color: "inherit",
   cursor: "pointer",
+  padding: 0,
+});
+
+globalStyle("body, h1, h2, h3, h4, h5, h6, p, ul, li, ol", {
+  margin: 0,
+  padding: 0,
 });
