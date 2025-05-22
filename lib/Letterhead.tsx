@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { itcCard } from "./common.css.ts";
 import { IndieTabletopClubSymbol } from "./IndieTabletopClubSymbol.tsx";
+import { letterhead } from "./internal.css.ts";
 import { LetterheadFooter } from "./LetterheadFooter.tsx";
 
 export type LetterheadProps = {
@@ -12,20 +12,11 @@ export function Letterhead(props: LetterheadProps) {
   const { children, headerIcon = true } = props;
 
   return (
-    <div
-      className={itcCard}
-      style={{
-        textTransform: "none",
-        padding: "4rem",
-        borderRadius: "1rem",
-        marginInline: "auto",
-        maxInlineSize: "36rem",
-      }}
-    >
+    <div className={letterhead}>
       {headerIcon && (
         <IndieTabletopClubSymbol
           style={{
-            marginBlockStart: "-1rem",
+            marginBlock: "-1rem 1rem",
             marginInline: "auto",
             display: "block",
             inlineSize: "2.5rem",
