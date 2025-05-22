@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function handleKeydown(event: KeyboardEvent) {
+function preventDefaultEscHandling(event: KeyboardEvent) {
   if (event.key === "Escape") {
     event.preventDefault();
   }
@@ -8,14 +8,14 @@ function handleKeydown(event: KeyboardEvent) {
 
 /**
  * This component prevents the default MacOS behaviour where a fullscreen window
- * gets minimised by pressing Escape.
+ * gets minimized by pressing Escape.
  */
 export function FullscreenDismissBlocker() {
   useEffect(() => {
-    window.addEventListener("keydown", handleKeydown);
+    window.addEventListener("keydown", preventDefaultEscHandling);
 
     return () => {
-      window.removeEventListener("keydown", handleKeydown);
+      window.removeEventListener("keydown", preventDefaultEscHandling);
     };
   }, []);
 
