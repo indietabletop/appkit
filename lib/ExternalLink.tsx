@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes } from "react";
 
-type ExternalLinkProps = Omit<
+export type ExternalLinkProps = Omit<
   AnchorHTMLAttributes<HTMLAnchorElement>,
   "rel" | "target"
 >;
