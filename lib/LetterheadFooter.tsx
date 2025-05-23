@@ -21,7 +21,7 @@ export function LetterheadFooter() {
           lineHeight: "1.25rem",
         }}
       >
-        Indie Tabletop Club supports independent game creators with high-quality
+        Indie Tabletop Club supports independent game creators with high‑quality
         digital tools.{" "}
         <ExternalLink
           href="https://indietabletop.club"
