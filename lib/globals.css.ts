@@ -1,5 +1,12 @@
 import { globalStyle } from "@vanilla-extract/css";
 
+globalStyle(":root", {
+  fontSynthesis: "none",
+  textRendering: "optimizeLegibility",
+  WebkitFontSmoothing: "antialiased",
+  MozOsxFontSmoothing: "grayscale",
+});
+
 globalStyle("*", {
   boxSizing: "border-box",
 });
