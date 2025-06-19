@@ -5,10 +5,11 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "release": "npm run build && np",
+    "release": "np",
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "vitest"
+    "test": "vitest",
+    "prepare": "npm run build"
   },
   "exports": {
     ".": "./dist/index.js",
