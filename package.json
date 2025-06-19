@@ -8,15 +8,14 @@
     "release": "np",
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "vitest",
-    "prepare": "npm run build"
+    "test": "vitest"
   },
   "exports": {
     ".": "./lib/index.ts",
     "./*": "./lib/*"
   },
   "files": [
-    "/dist"
+    "/lib"
   ],
   "author": "Artur Müller",
   "repository": "github:indietabletop/appkit",
