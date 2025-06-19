@@ -12,8 +12,8 @@
     "prepare": "npm run build"
   },
   "exports": {
-    ".": "./dist/index.js",
-    "./*": "./dist/*.js"
+    ".": "./lib/index.ts",
+    "./*": "./lib/*"
   },
   "files": [
     "/dist"

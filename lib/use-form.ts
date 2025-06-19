@@ -1,6 +1,6 @@
 import { type FormStoreState, useFormStore } from "@ariakit/react";
-import { Failure, Success } from "@indietabletop/appkit/async-op";
 import { useState } from "react";
+import { Failure, Success } from "./async-op.ts";
 
 type Validator<T> = (value: T) => string | null;
 

@@ -1,5 +1,5 @@
-import { Failure, Success } from "@indietabletop/appkit/async-op";
 import { type Infer, mask, object, string, Struct } from "superstruct";
+import { Failure, Success } from "./async-op.js";
 import { currentUser, sessionInfo } from "./structs.js";
 import type { CurrentUser, FailurePayload, SessionInfo } from "./types.js";
 
