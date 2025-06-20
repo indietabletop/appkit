@@ -15,6 +15,8 @@ export const itcSymbol = style({
 
 export const manofa = style({
   fontFamily: `"manofa", sans-serif`,
+  fontFeatureSettings: `"ss01"`,
+  letterSpacing: "-.01em",
 });
 
 export const minion = style({

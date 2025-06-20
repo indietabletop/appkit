@@ -12,6 +12,16 @@ export type FormSubmitButtonProps = FormSubmitProps & {
   loading: ReactNode;
 };
 
+/**
+ * Renders Ariakit FormSubmit component.
+ *
+ * It's main responsibility is to render the loading component (provided via
+ * the `loading` prop) when the form is in the submitting state. This component
+ * will be rendered over the usual content of the button, which will be hidden
+ * as long as the form is submitting.
+ *
+ * @remarks Must be rendered within Ariakit Form Context.
+ */
 export function FormSubmitButton(props: FormSubmitButtonProps) {
   const { children, className, style, loading, ...submitProps } = props;
   const form = useFormContext();
