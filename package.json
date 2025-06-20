@@ -12,11 +12,11 @@
     "storybook": "storybook dev -p 6006"
   },
   "exports": {
-    ".": "./dist/index.js",
-    "./*": "./dist/*.js"
+    ".": "./lib/index.ts",
+    "./*": "./lib/*"
   },
   "files": [
-    "/dist"
+    "/lib"
   ],
   "author": "Artur Müller",
   "repository": "github:indietabletop/appkit",
