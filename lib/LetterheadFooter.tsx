@@ -19,6 +19,7 @@ export function LetterheadFooter() {
           maxInlineSize: "25rem",
           fontSize: "0.875rem",
           lineHeight: "1.25rem",
+          fontFamily: "minion-pro, serif",
         }}
       >
         Indie Tabletop Club supports independent game creators with high‑quality
