@@ -13,7 +13,7 @@
   },
   "exports": {
     ".": "./lib/index.ts",
-    "./*": "./lib/*"
+    "./*.css.ts": "./lib/*.css.ts"
   },
   "files": [
     "/lib"
