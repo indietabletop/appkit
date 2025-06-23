@@ -22,6 +22,7 @@ export * from "./async-op.ts";
 export * from "./caught-value.ts";
 export * from "./class-names.ts";
 export * from "./client.ts";
+export * from "./knownFailure.ts";
 export * from "./media.ts";
 export * from "./structs.ts";
 export * from "./types.ts";
