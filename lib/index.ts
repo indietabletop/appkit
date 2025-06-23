@@ -4,6 +4,7 @@ export * from "./FormSubmitButton.tsx";
 export * from "./FullscreenDismissBlocker.tsx";
 export * from "./IndieTabletopClubSymbol.tsx";
 export * from "./Letterhead/index.tsx";
+export * from "./LetterheadForm/index.tsx";
 export * from "./LoadingIndicator.tsx";
 export * from "./ServiceWorkerHandler.tsx";
 
