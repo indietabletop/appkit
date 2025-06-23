@@ -1,12 +1,13 @@
-import { FormProvider } from "@ariakit/react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { form } from "../storybook/decorators.tsx";
 import { FormTextField } from "./index.tsx";
 
 const meta = {
-  title: " FormTextField",
+  title: "FormTextField",
   component: FormTextField,
   tags: ["autodocs"],
   args: {},
+  decorators: [form()],
 } satisfies Meta<typeof FormTextField>;
 
 export default meta;
@@ -18,12 +19,5 @@ export const Default: Story = {
     label: "Email",
     placeholder: "john@example.com",
     name: "foo",
-  },
-  render(args) {
-    return (
-      <FormProvider>
-        <FormTextField {...args} name="foo" />
-      </FormProvider>
-    );
   },
 };

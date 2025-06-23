@@ -1,31 +1,13 @@
 import {
-  FormCheckbox,
-  type FormCheckboxProps,
   FormError,
   FormInput,
   type FormInputProps,
   FormLabel,
-  type FormStore,
   useFormContext,
   useStoreState,
 } from "@ariakit/react";
-import { assignInlineVars } from "@vanilla-extract/dynamic";
 import { type ReactNode } from "react";
 import * as css from "./style.css.ts";
-
-export function FormCheckboxField(
-  props: FormCheckboxProps & { label: ReactNode },
-) {
-  const { label, name, ...inputProps } = props;
-
-  return (
-    <div>
-      <FormCheckbox name={name} {...inputProps} />{" "}
-      <FormLabel name={name}>{label}</FormLabel>
-      <FormError name={name} className={css.issue} />
-    </div>
-  );
-}
 
 export function FormTextField(
   props: FormInputProps & {
@@ -45,59 +27,9 @@ export function FormTextField(
         <FormInput {...inputProps} name={name} className={css.fieldInput} />
       </div>
 
-      <FormError name={name} className={css.issue} />
+      <FormError name={name} className={css.fieldIssue} />
 
       {hint && <div className={css.fieldHint}>{hint}</div>}
-    </div>
-  );
-}
-
-export function FormTextAreaField(
-  props: FormInputProps & {
-    label: string;
-    minRows?: number;
-  },
-) {
-  const { name, label, minRows, ...textareaProps } = props;
-  const form: FormStore<Record<string, string>> | undefined = useFormContext();
-  const value =
-    useStoreState(form, (state) => state?.values[name as string]) ?? "";
-  const lines = value.split("\n");
-
-  return (
-    <div className={css.field}>
-      <FormLabel name={name} className={css.fieldLabel}>
-        {label}
-      </FormLabel>
-
-      <span
-        className={css.fieldTextAreaContainer}
-        style={assignInlineVars({
-          [css.minRows]: `${minRows ?? 2}`,
-        })}
-      >
-        <span aria-hidden="true" className={css.fieldTextAreaSpacer}>
-          {lines.map((line, index) => {
-            return (
-              <span className={css.fieldTextAreaSpacerLine} key={index}>
-                {line}
-              </span>
-            );
-          })}
-        </span>
-
-        <FormInput
-          {...textareaProps}
-          name={name}
-          render={<textarea />}
-          className={css.fieldTextArea}
-          onKeyDown={(event) => {
-            if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) {
-              void form?.submit();
-            }
-          }}
-        />
-      </span>
     </div>
   );
 }
@@ -129,6 +61,25 @@ export function ReadonlyTextField(props: {
       </label>
 
       {props.hint && <div className={css.fieldHint}>{props.hint}</div>}
+    </div>
+  );
+}
+
+/**
+ * Renders an error message from form context.
+ *
+ * If there is no error message, will be completely omitted from DOM, so there
+ * is no need to guard it with an if statement.
+ */
+export function FormSubmitError(props: { name: string }) {
+  const form = useFormContext();
+  const message = useStoreState(form, (s) => {
+    return s?.errors[props.name] as string | undefined;
+  });
+
+  return (
+    <div role="alert" className={css.submitError}>
+      {message}
     </div>
   );
 }
