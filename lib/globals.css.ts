@@ -1,5 +1,8 @@
 import { globalStyle } from "@vanilla-extract/css";
 
+// Apply global vars
+import "./vars.css.ts";
+
 globalStyle(":root", {
   fontSynthesis: "none",
   textRendering: "optimizeLegibility",
