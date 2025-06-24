@@ -67,3 +67,10 @@ export const getSubmitFailureMessage = createFailureMessageGetter(
     },
   },
 );
+
+/**
+ * @deprecated Use {@link getSubmitFailureMessage} instead.
+ */
+export function toKnownFailureMessage(failure: FailurePayload) {
+  return getSubmitFailureMessage(failure);
+}
