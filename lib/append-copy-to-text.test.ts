@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 import {
   appendCopyToText,
   maybeAppendCopyToText,
-} from "../lib/append-copy-to-text";
+} from "./append-copy-to-text.ts";
 
 describe("appendCopyToText", () => {
   test("Appends ' (Copy)' to provided string", () => {
