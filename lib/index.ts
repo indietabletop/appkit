@@ -27,3 +27,4 @@ export * from "./failureMessages.ts";
 export * from "./media.ts";
 export * from "./structs.ts";
 export * from "./types.ts";
+export * from "./validations.ts";
