@@ -19,6 +19,7 @@ export const fieldLabel = style([
     fontSize: "0.75rem",
     fontWeight: 600,
     marginBottom: "0.5rem",
+    textAlign: "start",
   },
 ]);
 
@@ -31,6 +32,7 @@ export const fieldInput = style([
     fontSize: "1rem",
     lineHeight: "1.25rem",
     padding: "1rem 0 1rem 1rem",
+    textAlign: "start",
 
     ":read-only": {
       backgroundColor: "hsl(0 0% 0% / 0.05)",
@@ -50,6 +52,7 @@ export const fieldIssue = style({
   color: Color.PURPLE,
   fontSize: "0.875rem",
   marginTop: "0.5rem",
+  textAlign: "start",
 
   ":empty": {
     display: "none",
@@ -60,6 +63,7 @@ export const fieldHint = style({
   color: Color.MID_GRAY,
   fontSize: "0.875rem",
   marginTop: "0.5rem",
+  textAlign: "start",
 
   selectors: {
     [`${fieldIssue}:not(:empty) + &`]: {
@@ -73,6 +77,7 @@ export const submitError = style({
   color: Color.PURPLE,
   backgroundColor: Color.PALE_GRAY,
   borderRadius: "0.75rem",
+  textAlign: "start",
 
   ":empty": {
     display: "none",
