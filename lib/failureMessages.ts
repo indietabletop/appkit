@@ -29,23 +29,44 @@ function createFailureMessageGetter<T>(
   };
 }
 
-export const getFetchFailureMessages = createFailureMessageGetter(
+export type FetchFailureAction =
+  | {
+      type: "LINK";
+      href: string;
+      label: string;
+    }
+  | {
+      type: "RELOAD" | "REFETCH";
+      label: string;
+    };
+
+export type FetchFailure = {
+  title: string;
+  description: string;
+  action: FetchFailureAction;
+};
+
+export const getFetchFailureMessages = createFailureMessageGetter<FetchFailure>(
   {
     404: {
       title: `Not found`,
       description: `The link you have followed might be broken.`,
+      action: { type: "LINK", href: "~/", label: "Go back" },
     },
     500: {
       title: `Ooops, something went wrong`,
       description: `This is probably an issue with our servers. You can try refreshing.`,
+      action: { type: "RELOAD", label: "Reload app" },
     },
     connection: {
       title: `No connection`,
       description: `Check your interent connection and try again.`,
+      action: { type: "REFETCH", label: "Retry request" },
     },
     fallback: {
       title: `Ooops, something went wrong`,
       description: `This is probably an issue on our side. You can try refreshing.`,
+      action: { type: "RELOAD", label: "Reload app" },
     },
   },
   {
