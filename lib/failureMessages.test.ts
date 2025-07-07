@@ -10,6 +10,11 @@ describe("getFetchFailureMessages", () => {
 
     expect(result).toMatchInlineSnapshot(`
       {
+        "action": {
+          "href": "~/",
+          "label": "Go back",
+          "type": "LINK",
+        },
         "description": "The link you have followed might be broken.",
         "title": "Not found",
       }
@@ -21,6 +26,10 @@ describe("getFetchFailureMessages", () => {
 
     expect(result).toMatchInlineSnapshot(`
       {
+        "action": {
+          "label": "Reload app",
+          "type": "RELOAD",
+        },
         "description": "This is probably an issue with our servers. You can try refreshing.",
         "title": "Ooops, something went wrong",
       }
@@ -35,6 +44,11 @@ describe("getFetchFailureMessages", () => {
 
     expect(result).toMatchInlineSnapshot(`
       {
+        "action": {
+          "href": "~/",
+          "label": "Go back",
+          "type": "LINK",
+        },
         "description": "The link you have followed might be broken.",
         "title": "Army not found",
       }
@@ -54,6 +68,11 @@ describe("getFetchFailureMessages", () => {
 
     expect(result).toMatchInlineSnapshot(`
       {
+        "action": {
+          "href": "~/",
+          "label": "Go back",
+          "type": "LINK",
+        },
         "description": "It might have been deleted.",
         "title": "Army not found",
       }
@@ -65,6 +84,10 @@ describe("getFetchFailureMessages", () => {
 
     expect(result).toMatchInlineSnapshot(`
       {
+        "action": {
+          "label": "Retry request",
+          "type": "REFETCH",
+        },
         "description": "Check your interent connection and try again.",
         "title": "No connection",
       }
@@ -76,6 +99,10 @@ describe("getFetchFailureMessages", () => {
 
     expect(result).toMatchInlineSnapshot(`
       {
+        "action": {
+          "label": "Reload app",
+          "type": "RELOAD",
+        },
         "description": "This is probably an issue on our side. You can try refreshing.",
         "title": "Ooops, something went wrong",
       }
@@ -87,6 +114,10 @@ describe("getFetchFailureMessages", () => {
 
     expect(result).toMatchInlineSnapshot(`
       {
+        "action": {
+          "label": "Reload app",
+          "type": "RELOAD",
+        },
         "description": "This is probably an issue on our side. You can try refreshing.",
         "title": "Ooops, something went wrong",
       }
