@@ -2,7 +2,7 @@ import { createTheme, style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { textVariants } from "../atomic.css.ts";
 import { manofa, minion } from "../common.css.ts";
-import { Hover } from "../media.ts";
+import { Hover, MinWidth } from "../media.ts";
 
 const align = {
   start: textVariants({ textAlign: "start" }),
@@ -11,7 +11,7 @@ const align = {
 };
 
 export const [letterheadTheme, { padding, footerMargin }] = createTheme({
-  padding: "clamp(1rem, 8vw, 4rem)",
+  padding: "1.25rem",
   footerMargin: "3rem",
 });
 
@@ -25,6 +25,14 @@ export const letterhead = recipe({
       borderRadius: "1rem",
       marginInline: "auto",
       maxInlineSize: "36rem",
+
+      "@media": {
+        [MinWidth.SMALL]: {
+          vars: {
+            [padding]: `clamp(1.5rem, 8%, 4rem)`,
+          },
+        },
+      },
     },
   ],
 
