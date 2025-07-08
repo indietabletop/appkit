@@ -40,41 +40,52 @@ export type FetchFailureAction =
       label: string;
     };
 
-export type FetchFailure = {
+export type FetchFailureMessages = {
   title: string;
   description: string;
   action: FetchFailureAction;
 };
 
-export const getFetchFailureMessages = createFailureMessageGetter<FetchFailure>(
-  {
-    404: {
-      title: `Not found`,
-      description: `The link you have followed might be broken.`,
-      action: { type: "LINK", href: "~/", label: "Go back" },
+export const getFetchFailureMessages =
+  createFailureMessageGetter<FetchFailureMessages>(
+    {
+      401: {
+        title: "Not logged in",
+        description: "You must be logged in to view this page.",
+        action: { type: "LINK", href: "~/login", label: "Go to login" },
+      },
+      403: {
+        title: "Not authorized",
+        description: "You might be logged into the wrong account.",
+        action: { type: "LINK", href: "~/login", label: "Go to login" },
+      },
+      404: {
+        title: `Not found`,
+        description: `The link you have followed might be broken.`,
+        action: { type: "LINK", href: "~/", label: "Go back" },
+      },
+      500: {
+        title: `Ooops, something went wrong`,
+        description: `This is probably an issue with our servers. You can try refreshing.`,
+        action: { type: "RELOAD", label: "Reload app" },
+      },
+      connection: {
+        title: `No connection`,
+        description: `Check your interent connection and try again.`,
+        action: { type: "REFETCH", label: "Retry request" },
+      },
+      fallback: {
+        title: `Ooops, something went wrong`,
+        description: `This is probably an issue on our side. You can try refreshing.`,
+        action: { type: "RELOAD", label: "Reload app" },
+      },
     },
-    500: {
-      title: `Ooops, something went wrong`,
-      description: `This is probably an issue with our servers. You can try refreshing.`,
-      action: { type: "RELOAD", label: "Reload app" },
+    {
+      onOverride(fallback, override) {
+        return { ...fallback, ...override };
+      },
     },
-    connection: {
-      title: `No connection`,
-      description: `Check your interent connection and try again.`,
-      action: { type: "REFETCH", label: "Retry request" },
-    },
-    fallback: {
-      title: `Ooops, something went wrong`,
-      description: `This is probably an issue on our side. You can try refreshing.`,
-      action: { type: "RELOAD", label: "Reload app" },
-    },
-  },
-  {
-    onOverride(fallback, override) {
-      return { ...fallback, ...override };
-    },
-  },
-);
+  );
 
 export const getSubmitFailureMessage = createFailureMessageGetter(
   {
