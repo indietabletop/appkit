@@ -1,4 +1,5 @@
 // Components
+export * from "./DialogTrigger/index.tsx";
 export * from "./ExternalLink.tsx";
 export * from "./FormSubmitButton.tsx";
 export * from "./FullscreenDismissBlocker.tsx";
