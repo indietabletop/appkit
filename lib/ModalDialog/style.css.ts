@@ -1,8 +1,8 @@
-import { style, type ComplexStyleRule } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 import { recipe } from "@vanilla-extract/recipes";
 import { MinWidth } from "../media.ts";
 
-const scaleTransition: ComplexStyleRule = {
+const scaleTransition = {
   transition: "transform 200ms, opacity 200ms",
   transform: "scale(1.1)",
 
@@ -19,7 +19,7 @@ const scaleTransition: ComplexStyleRule = {
   },
 };
 
-const translateTransition: ComplexStyleRule = {
+const translateTransition = {
   transition: "transform 200ms, opacity 200ms",
   transform: "translateY(5rem)",
 
@@ -48,8 +48,8 @@ export const dialog = recipe({
   },
 
   variants: {
-    variant: {
-      form: {
+    size: {
+      large: {
         ...translateTransition,
         inlineSize: "100%",
         blockSize: "100%",
@@ -65,7 +65,7 @@ export const dialog = recipe({
         },
       },
 
-      confirm: {
+      small: {
         ...scaleTransition,
         inlineSize: "min(24rem, 90svw)",
         blockSize: "fit-content",
