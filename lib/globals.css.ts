@@ -8,6 +8,7 @@ globalStyle(":root", {
   textRendering: "optimizeLegibility",
   WebkitFontSmoothing: "antialiased",
   MozOsxFontSmoothing: "grayscale",
+  WebkitTapHighlightColor: "transparent",
 });
 
 globalStyle("*", {
