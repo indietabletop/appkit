@@ -285,4 +285,35 @@ export class IndieTabletopClient {
 
     return result;
   }
+
+  /**
+   * Uploads a file given S3 presigned config.
+   */
+  async uploadFile(
+    file: File,
+    presigned: { url: string; key: string; fields: Record<string, string> },
+  ): Promise<Success<string> | Failure<FailurePayload>> {
+    const formData = new FormData();
+
+    for (const [key, value] of Object.entries(presigned.fields)) {
+      formData.append(key, value);
+    }
+
+    formData.append("file", file);
+
+    try {
+      const upload = await fetch(presigned.url, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!upload.ok) {
+        return new Failure({ type: "API_ERROR", code: upload.status });
+      }
+
+      return new Success(`/${presigned.key}`);
+    } catch {
+      return new Failure({ type: "NETWORK_ERROR" });
+    }
+  }
 }
