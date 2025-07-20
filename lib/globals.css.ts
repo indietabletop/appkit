@@ -44,3 +44,14 @@ globalStyle("body, h1, h2, h3, h4, h5, h6, p, ul, li, ol", {
   margin: 0,
   padding: 0,
 });
+
+// Fathom SPA support depends on this image being added to the DOM, but they
+// are sloppy about taking out of the document flow, meaning that on pages
+// that are 100vh, there is a scrollbar flicker as the img element is added
+// to the DOM and then removed. This fixes said issue.
+globalStyle(`img[src^="https://cdn.usefathom.com/"]`, {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  opacity: 0.01,
+});
