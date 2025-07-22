@@ -18,6 +18,7 @@ export * from "./use-is-installed.ts";
 export * from "./use-media-query.ts";
 export * from "./use-reverting-state.ts";
 export * from "./use-scroll-restoration.ts";
+export * from "./useIsVisible.ts";
 
 // Utils
 export * from "./append-copy-to-text.ts";
