@@ -27,6 +27,7 @@ export * from "./caught-value.ts";
 export * from "./class-names.ts";
 export * from "./client.ts";
 export * from "./failureMessages.ts";
+export * from "./ids.ts";
 export * from "./media.ts";
 export * from "./random.ts";
 export * from "./sleep.ts";
