@@ -5,12 +5,13 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { Failure, Pending, Success } from "../../async-op.ts";
+import { Failure, isAsyncOp, Pending, Success } from "../../async-op.ts";
 import { caughtValueToString } from "../../caught-value.ts";
 import { useAsyncOp } from "../../use-async-op.ts";
 import type { AnyModernIDB } from "../types.ts";
 import type {
   DatabaseOpenRequestOp,
+  FlattenSuccessOps,
   InaccessibleDatabaseError,
   QueryOp,
 } from "./types.ts";
@@ -25,6 +26,17 @@ export function createDatabaseBindings<T extends AnyModernIDB>(db: T) {
 
   const cache = new Map<string, unknown>();
 
+  /**
+   * Performs an IndexedDB query and watches for changes.
+   *
+   * Note that queries will only be executed once IndexedDB is open.
+   *
+   * If query output is an AsyncOp, it will be flattened. In other words, you
+   * will only get one 'layer' of async ops.
+   *
+   * Provide a cache key if you want to make sure that data is synchronously
+   * available during mounts/unmounts.
+   */
   function useQuery<Output>(
     /**
      * `query` must have stable identity.
@@ -34,7 +46,7 @@ export function createDatabaseBindings<T extends AnyModernIDB>(db: T) {
     query: (db: T) => Promise<Output>,
 
     cacheKey?: string,
-  ): QueryOp<Output> {
+  ): FlattenSuccessOps<QueryOp<Output>> {
     const openRequest = useDatabaseOpenRequest();
     const [queryOp, setOp] = useState<QueryOp<Output>>(new Pending());
 
@@ -74,15 +86,23 @@ export function createDatabaseBindings<T extends AnyModernIDB>(db: T) {
     }, [cacheKey, openRequest, query]);
 
     return openRequest.flatMap(() => {
+      const flattenOutput = (output: Output) => {
+        if (isAsyncOp(output)) {
+          return output as FlattenSuccessOps<QueryOp<Output>>;
+        }
+
+        return new Success(output) as FlattenSuccessOps<QueryOp<Output>>;
+      };
+
       if (cacheKey) {
         const lastResult = cache.get(cacheKey) as QueryOp<Output> | undefined;
 
         if (lastResult && queryOp.isPending) {
-          return lastResult;
+          return lastResult.flatMap(flattenOutput);
         }
       }
 
-      return queryOp;
+      return queryOp.flatMap(flattenOutput);
     });
   }
 

@@ -1,9 +1,15 @@
-import type { AsyncOp } from "../../async-op.ts";
+import type { AsyncOp, Success } from "../../async-op.ts";
 import type { AnyModernIDB } from "../types.ts";
 
 export type DatabaseQueryOpFailure = QueryError | InaccessibleDatabaseError;
 
 export type QueryOp<Output> = AsyncOp<Output, DatabaseQueryOpFailure>;
+
+export type FlattenSuccessOps<T> = T extends Success<
+  infer S extends AsyncOp<unknown, unknown>
+>
+  ? S
+  : T;
 
 export type QueryError = {
   type: "QUERY_ERROR";

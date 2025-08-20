@@ -240,6 +240,14 @@ export function fold<Ops extends readonly AsyncOp<unknown, unknown>[] | []>(
   return new Pending() as never;
 }
 
+export function isAsyncOp(value: unknown): value is AsyncOp<unknown, unknown> {
+  return (
+    value instanceof Pending ||
+    value instanceof Success ||
+    value instanceof Failure
+  );
+}
+
 export type AsyncOp<SuccessValue, FailureValue> =
   | Pending
   | Success<SuccessValue>
