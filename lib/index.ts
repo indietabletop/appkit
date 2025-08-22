@@ -32,6 +32,7 @@ export * from "./media.ts";
 export * from "./random.ts";
 export * from "./sleep.ts";
 export * from "./structs.ts";
+export * from "./typeguards.ts";
 export * from "./types.ts";
 export * from "./validations.ts";
 
