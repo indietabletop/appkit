@@ -1,6 +1,6 @@
 import { Heading, type HeadingProps } from "@ariakit/react";
 import type { RecipeVariants } from "@vanilla-extract/recipes";
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { cx } from "../class-names.ts";
 import { interactiveText } from "../common.css.ts";
 import { ExternalLink } from "../ExternalLink.tsx";
@@ -22,14 +22,14 @@ export function LetterheadHeading(props: LetterheadHeadingProps) {
 }
 
 type LetterheadParagraphProps = RecipeVariants<typeof css.paragraph> &
-  ComponentProps<"p">;
+  ComponentPropsWithoutRef<"p">;
 
 export function LetterheadParagraph(props: LetterheadParagraphProps) {
   const { size, align, ...rest } = props;
   return <p {...rest} {...cx(props, css.paragraph({ size, align }))} />;
 }
 
-type LetterheadFooterProps = ComponentProps<"div">;
+type LetterheadFooterProps = ComponentPropsWithoutRef<"div">;
 
 export function LetterheadFooter(props: LetterheadFooterProps) {
   return (

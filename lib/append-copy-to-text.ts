@@ -18,7 +18,7 @@ export function appendCopyToText(input: string): string {
   // with the copy suffix, but it doesn't contain count.
   const nextCount = !count ? 2 : parseInt(count, 10) + 1;
 
-  return `${value.trim()} (Copy ${nextCount})`;
+  return `${value?.trim()} (Copy ${nextCount})`;
 }
 
 /**
