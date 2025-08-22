@@ -1,4 +1,4 @@
-import { type Infer, mask, object, string, Struct } from "superstruct";
+import { type Infer, mask, object, string, Struct, unknown } from "superstruct";
 import { Failure, Success } from "./async-op.js";
 import { currentUser, sessionInfo } from "./structs.js";
 import type { CurrentUser, FailurePayload, SessionInfo } from "./types.js";
@@ -284,6 +284,10 @@ export class IndieTabletopClient {
     }
 
     return result;
+  }
+
+  getRuleset(game: string, version: string) {
+    return this.fetch(`/v1/rulesets/${game}/${version}`, unknown());
   }
 
   /**
