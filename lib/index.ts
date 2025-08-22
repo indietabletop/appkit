@@ -8,6 +8,7 @@ export * from "./Letterhead/index.tsx";
 export * from "./LetterheadForm/index.tsx";
 export * from "./LoadingIndicator.tsx";
 export * from "./ModalDialog/index.tsx";
+export * from "./ReleaseInfo/index.tsx";
 export * from "./ServiceWorkerHandler.tsx";
 
 // Hooks
