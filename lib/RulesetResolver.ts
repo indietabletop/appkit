@@ -168,7 +168,7 @@ export function createRulesetResolverBindings<
    * in loops/lists where multiple components might request identical
    * ruleset verions.
    */
-  function useResolveRuleset(version: string) {
+  function useResolveRuleset(version: string | null | undefined) {
     const subscribe = useCallback((callback: () => void) => {
       resolver.subscribe(callback);
 
