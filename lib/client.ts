@@ -276,6 +276,22 @@ export class IndieTabletopClient {
     return req;
   }
 
+  async getSnapshot<T, S>(
+    gameCode: string,
+    snapshotId: string,
+    struct: Struct<T, S>,
+  ) {
+    return await this.fetch(`/v1/snapshots/${gameCode}/${snapshotId}`, struct);
+  }
+
+  async createSnapshot(gameCode: string, payload: object) {
+    return await this.fetch(
+      `/v1/snapshots/${gameCode}`,
+      object({ snapshotId: string() }),
+      { method: "POST", json: payload },
+    );
+  }
+
   async getCurrentUser() {
     const result = await this.fetchWithAuth(`/v1/users/me`, currentUser());
 
