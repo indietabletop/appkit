@@ -37,6 +37,7 @@ export * from "./sleep.ts";
 export * from "./structs.ts";
 export * from "./typeguards.ts";
 export * from "./types.ts";
+export * from "./unique.ts";
 export * from "./validations.ts";
 
 // Other
