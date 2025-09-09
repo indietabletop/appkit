@@ -9,7 +9,7 @@ import {
 import { type ReactNode } from "react";
 import * as css from "./style.css.ts";
 
-type LetterheadTextFieldProps = FormInputProps & {
+export type LetterheadTextFieldProps = FormInputProps & {
   label: string;
   hint?: ReactNode;
 };
