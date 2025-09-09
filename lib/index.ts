@@ -30,6 +30,7 @@ export * from "./class-names.ts";
 export * from "./client.ts";
 export * from "./copyrightRange.ts";
 export * from "./failureMessages.ts";
+export * from "./groupBy.ts";
 export * from "./ids.ts";
 export * from "./media.ts";
 export * from "./random.ts";
