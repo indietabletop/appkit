@@ -7,7 +7,7 @@ type UniqueKey = string | number;
  * Note that the first unique item is returned, all others are omitted
  * (assuming that they are unique, so it shouldn't matter).
  */
-export function unique<T>(items: T[], getKey: (item: T) => UniqueKey): T[] {
+export function uniqueBy<T>(items: T[], getKey: (item: T) => UniqueKey): T[] {
   const seen = new Set<UniqueKey>();
   const returnItems: T[] = [];
 

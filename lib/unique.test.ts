@@ -1,9 +1,9 @@
 import { describe, expect, test } from "vitest";
-import { unique } from "./unique.ts";
+import { uniqueBy } from "./unique.ts";
 
 describe("unique", () => {
   test("Returns unique items based on getKey", () => {
-    const result = unique(
+    const result = uniqueBy(
       [{ id: "zxcvbn" }, { id: "qwerty" }, { id: "zxcvbn" }],
       (item) => item.id,
     );
